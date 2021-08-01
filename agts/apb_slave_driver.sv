@@ -25,12 +25,12 @@ class apb_slave_driver extends uvm_driver#(apb_transaction);
 	task get_and_drive();
 		forever begin
 			seq_item_port.get_next_item(req);
-			`uvm_info("APB_SLV_DRV", "sequencer got next item", UVM_HIGH)
+			`uvm_info("APB_SLV_DRV", "driver got next item", UVM_HIGH)
 			void'($cast(rsp, req.clone()));
 			rsp.set_sequence_id(req.get_sequence_id());
 			rsp.set_transaction_id(req.get_transaction_id());
 			seq_item_port.item_done(rsp);
-			`uvm_info("APB_SLV_DRV", "sequencer item_done_triggered", UVM_HIGH)
+			`uvm_info("APB_SLV_DRV", "driver item_done_triggered", UVM_HIGH)
 		end
 	endtask: get_and_drive
 

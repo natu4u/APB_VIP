@@ -23,37 +23,37 @@ class apb_master_driver extends uvm_driver#(apb_transaction);
 		if(cfg.apb_verison == APB2) begin
 			forever begin
 				seq_item_port.get_next_item(req);
-				`uvm_info("APB_MST_DRV", "sequencer got next item", UVM_HIGH)
+				`uvm_info("APB_MST_DRV", "driver got next item", UVM_HIGH)
 				this.drive_transaction_apb2(req);
 				void'($cast(rsp, req.clone()));
 				rsp.set_sequence_id(req.get_sequence_id());
 				rsp.set_transaction_id(req.get_transaction_id());
 				seq_item_port.item_done(rsp);
-				`uvm_info("APB_MST_DRV", "sequencer item_done_triggered", UVM_HIGH)
+				`uvm_info("APB_MST_DRV", "driver item_done_triggered", UVM_HIGH)
 			end
 		end
 		else if(cfg.apb_verison == APB3) begin
 			forever begin
 				seq_item_port.get_next_item(req);
-				`uvm_info("APB_MST_DRV", "sequencer got next item", UVM_HIGH)
+				`uvm_info("APB_MST_DRV", "driver got next item", UVM_HIGH)
 				this.drive_transaction_apb3(req);
 				void'($cast(rsp, req.clone()));
 				rsp.set_sequence_id(req.get_sequence_id());
 				rsp.set_transaction_id(req.get_transaction_id());
 				seq_item_port.item_done(rsp);
-				`uvm_info("APB_MST_DRV", "sequencer item_done_triggered", UVM_HIGH)
+				`uvm_info("APB_MST_DRV", "driver item_done_triggered", UVM_HIGH)
 			end
 		end
 		else if(cfg.apb_verison == APB4) begin
 			forever begin
 				seq_item_port.get_next_item(req);
-				`uvm_info("APB_MST_DRV", "sequencer got next item", UVM_HIGH)
+				`uvm_info("APB_MST_DRV", "driver got next item", UVM_HIGH)
 				this.drive_transaction_apb4(req);
 				void'($cast(rsp, req.clone()));
 				rsp.set_sequence_id(req.get_sequence_id());
 				rsp.set_transaction_id(req.get_transaction_id());
 				seq_item_port.item_done(rsp);
-				`uvm_info("APB_MST_DRV", "sequencer item_done_triggered", UVM_HIGH)
+				`uvm_info("APB_MST_DRV", "driver item_done_triggered", UVM_HIGH)
 			end
 		end
 	endtask: get_and_drive
